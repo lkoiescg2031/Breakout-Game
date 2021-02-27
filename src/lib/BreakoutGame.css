@@ -1,0 +1,13 @@
+.breakout_wrapper {
+	min-width: 300px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+.breakout_view {
+	width: 100%;
+	max-width: 285px;
+	height: 500px;
+	margin: 0 0 15px 0;
+}

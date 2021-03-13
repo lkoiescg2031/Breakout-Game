@@ -10,13 +10,12 @@ export default class BreakoutGame extends PureComponent {
 	constructor(props) {
 		super(props);
 
-		this.game = new Game();
 		this.canvasRef = React.createRef();
 
 		this.____initContext = this.____initContext.bind(this);
 	}
 
-	____initContext() {
+	____initContext(game) {
 		const { stageWidth, stageHeight } = options.shape.stage;
 
 		const canvas = this.canvasRef.current;
@@ -29,11 +28,13 @@ export default class BreakoutGame extends PureComponent {
 		canvas.height = stageHeight * ratio;
 		ctx.scale(ratio, ratio);
 
-		this.game.onCreated(ctx);
+		game.onCreated(ctx);
+
+		return game;
 	}
 
 	componentDidMount() {
-		this.____initContext();
+		this.game = this.____initContext(new Game());
 		this.game.runGame();
 	}
 
